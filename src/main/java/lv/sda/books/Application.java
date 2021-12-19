@@ -8,6 +8,33 @@ public class Application {
 
     public static void main(String[] args) {
 
+/*        String strFile = "BookList.txt";
+
+        BufferedReader br = null;
+
+        try{
+            br = new BufferedReader(new FileReader("C:\\Java\\books\\src\\main\\resources\\BookList.txt"));
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+
+
+        BufferedWriter bw = null;
+
+        try{
+            bw = new BufferedWriter(new FileWriter("C:\\Java\\books\\src\\main\\resources\\BookList.txt"));
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }*/
+
+
+
+
+
+
         while (true) {
                 System.out.println("Enter q to exit application.");
                 System.out.println("Enter command number:");
