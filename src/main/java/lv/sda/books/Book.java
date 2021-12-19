@@ -7,19 +7,19 @@ public class Book {
     private String title;
     private String author;
     private String publisher;
-    private String description;
+    private String genre;
     private int pages;
     private int publishingYear;
 
     public Book() {
     }
 
-    public Book(String isbn, String title, String author, String publisher, String description, int pages, int publishingYear) {
+    public Book(String isbn, String title, String author, String publisher, String genre, int pages, int publishingYear) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.publisher = publisher;
-        this.description = description;
+        this.genre = genre;
         this.pages = pages;
         this.publishingYear = publishingYear;
     }
@@ -44,8 +44,8 @@ public class Book {
         return this;
     }
 
-    public Book setDescription(String description) {
-        this.description = description;
+    public Book setGenre(String genre) {
+        this.genre = genre;
         return this;
     }
 
@@ -75,8 +75,8 @@ public class Book {
         return publisher;
     }
 
-    public String getDescription() {
-        return description;
+    public String getGenre() {
+        return genre;
     }
 
     public int getPages() {
