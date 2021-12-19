@@ -9,12 +9,12 @@ public class Book {
     private String publisher;
     private String description;
     private int pages;
-    private LocalDate publishingYear;
+    private int publishingYear;
 
     public Book() {
     }
 
-    public Book(String isbn, String title, String author, String publisher, String description, int pages, LocalDate publishingYear) {
+    public Book(String isbn, String title, String author, String publisher, String description, int pages, int publishingYear) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -54,7 +54,7 @@ public class Book {
         return this;
     }
 
-    public Book setPublishingYear(LocalDate publishingYear) {
+    public Book setPublishingYear(int publishingYear) {
         this.publishingYear = publishingYear;
         return this;
     }
@@ -83,7 +83,7 @@ public class Book {
         return pages;
     }
 
-    public LocalDate getPublishingYear() {
+    public int getPublishingYear() {
         return publishingYear;
     }
 }
