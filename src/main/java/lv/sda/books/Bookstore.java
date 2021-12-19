@@ -17,13 +17,13 @@ public class Bookstore {
     }
 
     // Find book by isbn
-    public Book getInfo(String isbn) {
+    public Book findByIsbn(String isbn) {
 
         return null;
     }
 
     // Find book by title
-    public List<Book> searchBook(String query) {
+    public List<Book> findByTitle(String query) {
 
         return emptyList();
     }
