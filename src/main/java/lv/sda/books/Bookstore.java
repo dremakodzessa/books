@@ -40,10 +40,21 @@ public class Bookstore {
     // Add book
     public void addBook(Book book) {
 
+        if(booksList.contains(book)){
+            System.out.println("This book already exist");
+        }
+        booksList.add(book);
+
+
+
     }
 
     // Remove book
     public void removeBook(String isbn) {
+
+        if(findByIsbn(isbn) != null){
+            booksList.remove(isbn);
+        }
 
     }
 
