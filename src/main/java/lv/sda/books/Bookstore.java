@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.Collections.emptyList;
-
 public class Bookstore {
 
 
@@ -51,19 +49,30 @@ public class Bookstore {
 
     // Find book by isbn
     public Book findByIsbn(String isbn) {
+        for(Book book: booksList){
+            if(book.getIsbn().equals(isbn) ){
+                return book;
+            }
+        }
 
         return null;
     }
 
     // Find book by title
     public List<Book> findByTitle(String query) {
+        List<Book> result = new ArrayList();
 
-        return emptyList();
+        for(Book book: booksList){
+            if(book.getTitle().contains(query)){
+                result.add(book);
+            }
+        }
+        return result;
     }
 
     // Get book list
     public List<Book> allBooks() {
 
-        return emptyList();
+        return booksList;
     }
 }
