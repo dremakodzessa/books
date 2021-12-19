@@ -17,7 +17,7 @@ public class Bookstore {
 
     public Bookstore() {
         try {
-            List<String> lines = Files.readAllLines(Paths.get("C:\\Java\\books\\src\\main\\resources\\BookList.txt"));
+            List<String> lines = Files.readAllLines(Paths.get("C:\\Java\\books\\src\\main\\resources\\BookList.csv"));
             List<Book> books = lines.stream().map(line -> {
                 List<String> fields = Arrays.asList(line.split(";"));
                 return new Book(
