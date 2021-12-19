@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Bookstore {
 
 
-    //book list
+    //book list with all books
     private static ArrayList<Book> booksList = new ArrayList<>();
 
 
