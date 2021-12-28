@@ -10,6 +10,11 @@ import java.util.stream.Collectors;
 
 public class Bookstore {
 
+/*@Override
+   public String toString(){
+
+    return getClass().getSimpleName();
+}*/
 
     //book list with all books
     private static ArrayList<Book> booksList = new ArrayList<>();
@@ -54,6 +59,8 @@ public class Bookstore {
 
         if(findByIsbn(isbn) != null){
             booksList.remove(isbn);
+        }else {
+            System.out.println("This book not found");
         }
 
     }
@@ -62,7 +69,9 @@ public class Bookstore {
     public Book findByIsbn(String isbn) {
         for(Book book: booksList){
             if(book.getIsbn().equals(isbn) ){
+             // System.out.println(book.getIsbn() + book.getTitle() + book.getAuthor() + book.getGenre() + book.getPublisher() + book.getPages() + book.getPublishingYear());
                 return book;
+
             }
         }
 
