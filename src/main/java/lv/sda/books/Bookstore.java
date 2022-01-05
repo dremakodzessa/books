@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
 public class Bookstore {
 
     // Get book list
-    public static ArrayList<Book> booksList = new ArrayList<>();
+    public List<Book> booksList = new ArrayList<>();
 
     public Bookstore() {
         try {
             List<String> lines = Files.readAllLines(Paths
-                    .get("C:\\Java\\books\\src\\main\\resources\\BookList.csv"));
+                    .get("src\\main\\resources\\BookList.csv"));
 
             List<Book> books = lines.stream().map(line -> {
                 List<String> fields = Arrays.asList(line.split(";"));
@@ -30,55 +30,64 @@ public class Bookstore {
                 );
             }).collect(Collectors.toList());
             booksList.addAll(books);
-        } catch (IOException e) {}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Add book
-    public void addBook(Book book) {
-
-        if(booksList.contains(book)){
-            System.out.println("This book already exists");
+    public void addBook(Book i) {
+        if(booksList.contains(i)){
+            System.out.println("This book already exists!");
         }
-        booksList.add(book);
+        booksList.add(i);
     }
 
     // Remove book
-    public void removeBook(String isbn) {
-
-        if(findByIsbn(isbn) != null){
-            booksList.remove(isbn);
-        }else {
-            System.out.println("This book not found");
+    public boolean removeBook(String isbn) {
+        boolean x = false;
+        for (Book i : booksList){
+            if(i.getIsbn().equals(isbn)){
+                booksList.remove(isbn);
+                x = true;
+            }
         }
+        if (!x){
+           System.out.println("Record not found!");
+        } else {
+            System.out.println("Book successfully removed.");
+        }
+        return x;
     }
 
     // Find book by isbn
-    public Book findByIsbn(String isbn) {
-        for(Book book: booksList){
-            if(book.getIsbn().equals(isbn) ){
-             // System.out.println(
-                // book.getIsbn() +
-                // book.getTitle() +
-                // book.getAuthor() +
-                // book.getGenre() +
-                // book.getPublisher() +
-                // book.getPages() +
-                // book.getPublishingYear();
-                return book;
+    public boolean findByIsbn(String isbn) {
+        boolean x = false;
+        for (Book i : booksList) {
+            if (i.getIsbn().equals(isbn)) {
+                System.out.println(i);
+                x = true;
             }
         }
-        return null;
+        if (!x) {
+            System.out.println("Record not found!");
+        }
+        return x;
     }
 
     // Find book by title
-    public List<Book> findByTitle(String query) {
-        List<Book> result = new ArrayList();
-        for(Book book: booksList){
-            if(book.getTitle().contains(query)){
-                result.add(book);
+    public boolean findByTitle(String title) {
+        boolean x = false;
+        for(Book i : booksList){
+            if(i.getTitle().equalsIgnoreCase(title)){
+                System.out.println(i);
+                x = true;
             }
         }
-        return result;
+        if (!x){
+            System.out.println("Record not found!");
+        }
+        return x;
     }
 
     // Save to file
