@@ -1,5 +1,4 @@
 package lv.sda.books;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,19 +9,14 @@ import java.util.stream.Collectors;
 
 public class Bookstore {
 
-/*@Override
-   public String toString(){
-
-    return getClass().getSimpleName();
-}*/
-
-    //book list with all books
-    private static ArrayList<Book> booksList = new ArrayList<>();
-
+    // Get book list
+    public static ArrayList<Book> booksList = new ArrayList<>();
 
     public Bookstore() {
         try {
-            List<String> lines = Files.readAllLines(Paths.get("C:\\Java\\books\\src\\main\\resources\\BookList.csv"));
+            List<String> lines = Files.readAllLines(Paths
+                    .get("C:\\Java\\books\\src\\main\\resources\\BookList.csv"));
+
             List<Book> books = lines.stream().map(line -> {
                 List<String> fields = Arrays.asList(line.split(";"));
                 return new Book(
@@ -36,22 +30,16 @@ public class Bookstore {
                 );
             }).collect(Collectors.toList());
             booksList.addAll(books);
-        } catch (IOException e) {
-
-        }
+        } catch (IOException e) {}
     }
-
 
     // Add book
     public void addBook(Book book) {
 
         if(booksList.contains(book)){
-            System.out.println("This book already exist");
+            System.out.println("This book already exists");
         }
         booksList.add(book);
-
-
-
     }
 
     // Remove book
@@ -62,26 +50,29 @@ public class Bookstore {
         }else {
             System.out.println("This book not found");
         }
-
     }
 
     // Find book by isbn
     public Book findByIsbn(String isbn) {
         for(Book book: booksList){
             if(book.getIsbn().equals(isbn) ){
-             // System.out.println(book.getIsbn() + book.getTitle() + book.getAuthor() + book.getGenre() + book.getPublisher() + book.getPages() + book.getPublishingYear());
+             // System.out.println(
+                // book.getIsbn() +
+                // book.getTitle() +
+                // book.getAuthor() +
+                // book.getGenre() +
+                // book.getPublisher() +
+                // book.getPages() +
+                // book.getPublishingYear();
                 return book;
-
             }
         }
-
         return null;
     }
 
     // Find book by title
     public List<Book> findByTitle(String query) {
         List<Book> result = new ArrayList();
-
         for(Book book: booksList){
             if(book.getTitle().contains(query)){
                 result.add(book);
@@ -90,12 +81,7 @@ public class Bookstore {
         return result;
     }
 
-    // Get book list
-    public List<Book> allBooks() {
-
-        return booksList;
-    }
-
+    // Save to file
     public void saveToFile(){
 
     }
