@@ -44,12 +44,43 @@ public class Application {
                     break;
 
                 case "3":
-                    // Add book (UB)
+                    // Add book
+                    Book i = new Book();
+                    System.out.println("Please enter the following parameters -");
 
+                    System.out.println("ISBN:");
+                    String i1 = scanner.nextLine();
+                    i.setIsbn(i1);
+
+                    System.out.println("Title:");
+                    String i2 = scanner.nextLine();
+                    i.setTitle(i2);
+
+                    System.out.println("Author:");
+                    String i3 = scanner.nextLine();
+                    i.setAuthor(i3);
+
+                    System.out.println("Publisher:");
+                    String i4 = scanner.nextLine();
+                    i.setPublisher(i4);
+
+                    System.out.println("Genre:");
+                    String i5 = scanner.nextLine();
+                    i.setGenre(i5);
+
+                    System.out.println("Page count:");
+                    int i6 = scanner.nextInt();
+                    i.setPages(i6);
+
+                    System.out.println("Publishing year:");
+                    int i7 = scanner.nextInt();
+                    i.setPublishingYear(i7);
+
+                    bs.addBook(i);
                     break;
 
                 case "4":
-                    // Remove book (doesn't work!)
+                    // Remove book
                     System.out.println("Provide ISBN of the book to remove: ");
                     input2 = scanner.nextLine();
                     bs.removeBook(input2);
@@ -57,10 +88,7 @@ public class Application {
 
                 case "5":
                     // Get book list
-                    System.out.println("Book list:");
-                    for (Book i : bs.booksList){
-                        System.out.println(i);
-                    }
+                    bs.printList();
                     break;
 
                 default:
