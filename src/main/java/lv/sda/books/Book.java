@@ -57,6 +57,19 @@ public class Book {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", genre='" + genre + '\'' +
+                ", pages=" + pages +
+                ", publishingYear=" + publishingYear +
+                '}';
+    }
+
     public String getIsbn() {
         return isbn;
     }
