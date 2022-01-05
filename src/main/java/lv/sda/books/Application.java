@@ -1,48 +1,14 @@
 package lv.sda.books;
-
-
 import java.util.Scanner;
 
-public class Application extends Bookstore{
+import static lv.sda.books.Bookstore.booksList;
 
+public class Application {
     static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
 
-/*        String strFile = "BookList.txt";
-
-        BufferedReader br = null;
-
-        try{
-            br = new BufferedReader(new FileReader("C:\\Java\\books\\src\\main\\resources\\BookList.txt"));
-
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-
-
-
-        BufferedWriter bw = null;
-
-        try{
-            bw = new BufferedWriter(new FileWriter("C:\\Java\\books\\src\\main\\resources\\BookList.txt"));
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }*/
-
         while (true) {
-
             Bookstore bs = new Bookstore();
-
-/*            for(int i =0; bs.allBooks().addAll(bs.allBooks()); i++){
-
-                System.out.println(bs.allBooks().get(i).getIsbn() + " " + bs.allBooks().get(i).getTitle());
-
-            }*/
-
-
-
                 System.out.println("Enter q to exit application.");
                 System.out.println("Enter command number:");
                 System.out.println("Menu");
@@ -61,39 +27,45 @@ public class Application extends Bookstore{
         }
 
             switch (input) {
-
-
                 case "1":
-                   // System.out.println("Searching for book by ISBN");
-
+                   // Search book by ISBN (printout missing here!)
                     System.out.println("Please enter book ISBN to search:");
                     scanner.nextLine();
                     System.out.println(bs.findByIsbn(input));
                     break;
 
                 case "2":
-                    //System.out.println("Searching for book by title");
+                    // Search book by title (printout missing here!)
                     System.out.println("Please enter book title to search:");
                     scanner.nextLine();
                     System.out.println(bs.findByTitle(input));
                     break;
 
                 case "3":
-                    System.out.println("Adding book");
+                    // Add book (UB)
+
                     break;
 
                 case "4":
-                    //System.out.println("Removing book");
-
+                    // Remove book (does it work?)
                     System.out.println("Provide ISBN of the book to remove: ");
                     scanner.nextLine();
-
                     bs.removeBook(input);
                     break;
 
                 case "5":
-                    System.out.println("Listing available books:");
+                    // Get book list (UB) (no printout!)
+                    System.out.println("Book list:");
+                    for (Book i : booksList){
+                        System.out.println(i);
+                    }
                     break;
+
+                case "6":
+                    // Save to file (UB)
+
+                    break;
+
                 default:
                     System.out.println("Wrong input, please try again");
             }
