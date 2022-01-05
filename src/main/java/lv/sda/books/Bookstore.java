@@ -35,20 +35,30 @@ public class Bookstore {
         }
     }
 
+    public void printList(){
+        System.out.println("Book list:");
+        for (Book i : booksList){
+            System.out.println(i);
+        }
+    }
+
     // Add book
     public void addBook(Book i) {
         if(booksList.contains(i)){
             System.out.println("This book already exists!");
+        } else {
+            booksList.add(i);
+            System.out.println("Book successfully added to the database.");
         }
-        booksList.add(i);
+
     }
 
     // Remove book
-    public boolean removeBook(String isbn) {
+    public void removeBook(String isbn) {
         boolean x = false;
         for (Book i : booksList){
             if(i.getIsbn().equals(isbn)){
-                booksList.remove(isbn);
+                booksList.remove(i);
                 x = true;
             }
         }
@@ -57,7 +67,7 @@ public class Bookstore {
         } else {
             System.out.println("Book successfully removed.");
         }
-        return x;
+
     }
 
     // Find book by isbn
