@@ -1,11 +1,12 @@
 package lv.sda.books;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Application {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String input1;
         String input2;
         Bookstore bs = new Bookstore();
@@ -25,6 +26,7 @@ public class Application {
 
             if ("0".equals(input1)) {
                     System.out.println("You have exited the application.");
+                    bs.saveToFile();
                     break;
             }
 
