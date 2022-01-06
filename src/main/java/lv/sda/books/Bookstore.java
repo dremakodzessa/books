@@ -1,5 +1,9 @@
 package lv.sda.books;
+
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -100,8 +104,29 @@ public class Bookstore {
         return x;
     }
 
-    // Save to file
-    public void saveToFile(){
+    public void saveData(String fileName, String text, boolean append ) throws IOException{
 
+        File file = new File(fileName);
+
+        FileWriter fw = new FileWriter(file, append);
+
+        PrintWriter pw = new PrintWriter(fw);
+
+        pw.println(text);
+
+        pw.close();
+    }
+
+    // Save to file
+    public void saveToFile() throws IOException {
+
+        for(int i=0; i<booksList.size();i++){
+            String dataToSave = booksList.get(i).getIsbn() +";"+booksList.get(i).getTitle()
+                    +";"+booksList.get(i).getAuthor()+";"+booksList.get(i).getPublisher()
+                    +";"+booksList.get(i).getGenre()+";"+booksList.get(i).getPages()
+                    +";"+booksList.get(i).getPublishingYear();
+
+                saveData("src\\main\\resources\\BookList.csv", dataToSave,true);
+        }
     }
 }
