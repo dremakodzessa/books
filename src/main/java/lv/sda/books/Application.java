@@ -26,6 +26,7 @@ public class Application {
 
             if ("0".equals(input1)) {
                     System.out.println("You have exited the application.");
+                    bs.deleteFile();
                     bs.saveToFile();
                     break;
             }

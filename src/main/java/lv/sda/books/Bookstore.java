@@ -117,6 +117,15 @@ public class Bookstore {
         pw.close();
     }
 
+    public void deleteFile() throws IOException{
+
+        File file = new File("src\\main\\resources\\BookList.csv");
+
+        file.delete();
+
+
+    }
+
     // Save to file
     public void saveToFile() throws IOException {
 
