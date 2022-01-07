@@ -18,6 +18,7 @@ public class Application {
             System.out.println("3 - Add book");
             System.out.println("4 - Remove book");
             System.out.println("5 - List available books");
+            System.out.println("6 - Save");
             System.out.println("0 - Quit");
             System.out.println("======================================");
             System.out.println("Please enter command number from menu:");
@@ -26,8 +27,6 @@ public class Application {
 
             if ("0".equals(input1)) {
                     System.out.println("You have exited the application.");
-                    bs.deleteFile();
-                    bs.saveToFile();
                     break;
             }
 
@@ -48,38 +47,38 @@ public class Application {
 
                 case "3":
                     // Add book
-                    Book i = new Book();
-                    System.out.println("Please enter the following parameters -");
+                    Book newBook = new Book();
+                    System.out.println("Please enter the following parameters ->");
 
                     System.out.println("ISBN:");
                     String i1 = scanner.nextLine();
-                    i.setIsbn(i1);
+                    newBook.setIsbn(i1);
 
                     System.out.println("Title:");
                     String i2 = scanner.nextLine();
-                    i.setTitle(i2);
+                    newBook.setTitle(i2);
 
                     System.out.println("Author:");
                     String i3 = scanner.nextLine();
-                    i.setAuthor(i3);
+                    newBook.setAuthor(i3);
 
                     System.out.println("Publisher:");
                     String i4 = scanner.nextLine();
-                    i.setPublisher(i4);
+                    newBook.setPublisher(i4);
 
                     System.out.println("Genre:");
                     String i5 = scanner.nextLine();
-                    i.setGenre(i5);
+                    newBook.setGenre(i5);
 
                     System.out.println("Page count:");
                     int i6 = scanner.nextInt();
-                    i.setPages(i6);
+                    newBook.setPages(i6);
 
                     System.out.println("Publishing year:");
                     int i7 = scanner.nextInt();
-                    i.setPublishingYear(i7);
+                    newBook.setPublishingYear(i7);
 
-                    bs.addBook(i);
+                    bs.addBook(newBook);
                     break;
 
                 case "4":
@@ -92,6 +91,13 @@ public class Application {
                 case "5":
                     // Get book list
                     bs.printList();
+                    break;
+
+                case "6":
+                    // Save to file
+                    bs.deleteFile();
+                    bs.saveToFile();
+                    System.out.println("All changes saved to the database.");
                     break;
 
                 default:
