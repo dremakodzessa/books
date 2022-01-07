@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class Bookstore {
 
-    // Get book list
+    // Upload file to array list
     public List<Book> booksList = new ArrayList<>();
 
     public Bookstore() {
@@ -39,6 +39,7 @@ public class Bookstore {
         }
     }
 
+    // Get book list
     public void printList(){
         System.out.println("Book list:");
         for (Book i : booksList){
@@ -59,19 +60,14 @@ public class Bookstore {
 
     // Remove book
     public void removeBook(String isbn) {
-        boolean x = false;
-        for (Book i : booksList){
-            if(i.getIsbn().equals(isbn)){
-                booksList.remove(i);
-                x = true;
-            }
-        }
-        if (!x){
-           System.out.println("Record not found!");
+        Book one = booksList.stream().filter
+                (y -> y.getIsbn().equals(isbn)).findFirst().orElse(null);
+        if (one != null) {
+            booksList.remove(one);
+            System.out.println("Book successfully removed from database.");
         } else {
-            System.out.println("Book successfully removed.");
+            System.out.println("Record not found!");
         }
-
     }
 
     // Find book by isbn
@@ -104,38 +100,33 @@ public class Bookstore {
         return x;
     }
 
-    public void saveData(String fileName, String text, boolean append ) throws IOException{
-
-        File file = new File(fileName);
-
-        FileWriter fw = new FileWriter(file, append);
-
-        PrintWriter pw = new PrintWriter(fw);
-
-        pw.println(text);
-
-        pw.close();
-    }
-
-    public void deleteFile() throws IOException{
-
-        File file = new File("src\\main\\resources\\BookList.csv");
-
-        file.delete();
-
-
-    }
-
     // Save to file
-    public void saveToFile() throws IOException {
+    public void deleteFile()
+            throws IOException{
+                File file = new File("src\\main\\resources\\BookList.csv");
+                file.delete();
+    }
 
-        for(int i=0; i<booksList.size();i++){
-            String dataToSave = booksList.get(i).getIsbn() +";"+booksList.get(i).getTitle()
-                    +";"+booksList.get(i).getAuthor()+";"+booksList.get(i).getPublisher()
-                    +";"+booksList.get(i).getGenre()+";"+booksList.get(i).getPages()
+    public void saveData(String fileName, String text, boolean append )
+            throws IOException{
+                File file = new File(fileName);
+                FileWriter fw = new FileWriter(file, append);
+                PrintWriter pw = new PrintWriter(fw);
+                pw.println(text);
+                pw.close();
+            }
+
+    public void saveToFile() throws IOException {
+        for(int i = 0; i < booksList.size(); i++){
+            String dataToSave = booksList.get(i).getIsbn()
+                    +";"+booksList.get(i).getTitle()
+                    +";"+booksList.get(i).getAuthor()
+                    +";"+booksList.get(i).getPublisher()
+                    +";"+booksList.get(i).getGenre()
+                    +";"+booksList.get(i).getPages()
                     +";"+booksList.get(i).getPublishingYear();
 
-                saveData("src\\main\\resources\\BookList.csv", dataToSave,true);
+            saveData("src\\main\\resources\\BookList.csv", dataToSave,true);
         }
     }
 }
