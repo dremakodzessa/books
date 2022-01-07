@@ -55,7 +55,6 @@ public class Bookstore {
             booksList.add(i);
             System.out.println("Book successfully added to the database.");
         }
-
     }
 
     // Remove book

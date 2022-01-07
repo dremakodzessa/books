@@ -71,12 +71,12 @@ public class Application {
                     newBook.setGenre(i5);
 
                     System.out.println("Page count:");
-                    int i6 = scanner.nextInt();
-                    newBook.setPages(i6);
+                    String i6 = scanner.nextLine();
+                    newBook.setPages(Integer.parseInt(i6));
 
                     System.out.println("Publishing year:");
-                    int i7 = scanner.nextInt();
-                    newBook.setPublishingYear(i7);
+                    String i7 = scanner.nextLine();
+                    newBook.setPublishingYear(Integer.parseInt(i7));
 
                     bs.addBook(newBook);
                     break;
