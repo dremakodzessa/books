@@ -49,12 +49,27 @@ public class Bookstore {
 
     // Add book
     public void addBook(Book i) {
-        if(booksList.contains(i)){
-            System.out.println("This book already exists!");
-        } else {
-            booksList.add(i);
-            System.out.println("Book successfully added to the database.");
+
+        boolean isDuplicate= false;
+
+        for(int j=0; j< booksList.size(); j++){
+
+
+            if(!(i.getIsbn().equals(booksList.get(j).getIsbn()))){
+
+            } else {
+                isDuplicate = true;
+                System.out.println("This book already exist");
+            }
+
         }
+
+        if(!isDuplicate){
+            booksList.add(i);
+            System.out.println("Book successfully added");
+        }
+
+
     }
 
     // Remove book
