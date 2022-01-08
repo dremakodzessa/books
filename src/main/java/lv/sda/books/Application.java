@@ -1,4 +1,5 @@
 package lv.sda.books;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -26,13 +27,13 @@ public class Application {
             input1 = scanner.nextLine();
 
             if ("0".equals(input1)) {
-                    System.out.println("You have exited the application.");
-                    break;
+                System.out.println("You have exited the application.");
+                break;
             }
 
             switch (input1) {
                 case "1":
-                   // Search book by ISBN
+                    // Search book by ISBN
                     System.out.println("Please enter book ISBN to search:");
                     input2 = scanner.nextLine();
                     bs.findByIsbn(input2);
@@ -71,15 +72,40 @@ public class Application {
                     newBook.setGenre(i5);
 
                     System.out.println("Page count:");
-                    String i6 = scanner.nextLine();
-                    newBook.setPages(Integer.parseInt(i6));
+
+                    while (true){
+
+                        String i6 = scanner.nextLine();
+
+                        try {
+                            newBook.setPages(Integer.parseInt(i6));
+                            break;
+                        }catch (NumberFormatException e){
+                            System.out.println("Wrong input, please try again");
+                        }
+
+                    }
 
                     System.out.println("Publishing year:");
-                    String i7 = scanner.nextLine();
-                    newBook.setPublishingYear(Integer.parseInt(i7));
+
+                    while (true){
+
+                        String i7 = scanner.nextLine();
+
+                        try {
+                            newBook.setPublishingYear(Integer.parseInt(i7));
+                            break;
+                        }catch (NumberFormatException e){
+                            System.out.println("Wrong input, please try again");
+                        }
+
+                    }
+
 
                     bs.addBook(newBook);
+
                     break;
+
 
                 case "4":
                     // Remove book
