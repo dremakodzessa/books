@@ -1,12 +1,12 @@
 package lv.sda.books;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class ApplicationTest {
     @Test
-    public void sampleTest(){
-        Assertions.assertEquals(1,1 );
-
+    public void findByIsbnTest(){
+        Bookstore bs = new Bookstore("src\\test\\resources\\TestBookList.csv");
+        assertEquals(true, bs.findByIsbn("140449493"));
     }
 }

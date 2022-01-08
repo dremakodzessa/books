@@ -1,5 +1,4 @@
 package lv.sda.books;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,9 +16,16 @@ public class Bookstore {
     public List<Book> booksList = new ArrayList<>();
 
     public Bookstore() {
+        readBooksFromFile("src\\main\\resources\\BookList.csv");
+    }
+
+    public Bookstore(String file) {
+        readBooksFromFile(file);
+    }
+
+    private void readBooksFromFile(String file) {
         try {
-            List<String> lines = Files.readAllLines(Paths
-                    .get("src\\main\\resources\\BookList.csv"));
+            List<String> lines = Files.readAllLines(Paths.get(file));
 
             List<Book> books = lines.stream().map(line -> {
                 List<String> fields = Arrays.asList(line.split(";"));
@@ -49,27 +55,18 @@ public class Bookstore {
 
     // Add book
     public void addBook(Book i) {
-
         boolean isDuplicate= false;
-
-        for(int j=0; j< booksList.size(); j++){
-
-
+        for(int j = 0; j < booksList.size(); j++){
             if(!(i.getIsbn().equals(booksList.get(j).getIsbn()))){
-
             } else {
                 isDuplicate = true;
-                System.out.println("This book already exist");
+                System.out.println("This book already exists!");
             }
-
         }
-
         if(!isDuplicate){
             booksList.add(i);
-            System.out.println("Book successfully added");
+            System.out.println("Book successfully added to the database.");
         }
-
-
     }
 
     // Remove book
