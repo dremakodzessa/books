@@ -8,13 +8,13 @@ public class ApplicationTest {
     @Test
     public void findByIsbnTest(){
         Bookstore bs = new Bookstore("src\\test\\resources\\TestBookList.csv");
-        assertEquals(true, bs.findByIsbn("140449493"));
+        assertEquals(true, bs.find("140449493"));
     }
 
     @Test
     public void findByTitleTest(){
         Bookstore bs = new Bookstore("src\\test\\resources\\TestBookList.csv");
-        assertEquals(true,bs.findByTitle("The Nicomachean Ethics"));
+        assertEquals(true,bs.find("The Nicomachean Ethics"));
     }
 
     @Test
